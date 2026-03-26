@@ -16,6 +16,7 @@ export default async function ProgresoPage() {
     <ProgresoClient
       clienteId={cliente.id}
       pesoMeta={cliente.peso_meta ?? null}
+      pesoInicial={cliente.peso_inicial ?? null}
       registros={registros ?? []}
     />
   );

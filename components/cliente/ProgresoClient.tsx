@@ -19,10 +19,11 @@ type Registro = {
 interface Props {
   clienteId: string;
   pesoMeta: number | null;
+  pesoInicial: number | null;
   registros: Registro[];
 }
 
-export default function ProgresoClient({ clienteId, pesoMeta, registros }: Props) {
+export default function ProgresoClient({ clienteId, pesoMeta, pesoInicial, registros }: Props) {
   const router  = useRouter();
   const latest  = registros[registros.length - 1] ?? null;
   const last8   = registros.slice(-8);
@@ -58,11 +59,11 @@ export default function ProgresoClient({ clienteId, pesoMeta, registros }: Props
     setSaving(false);
   }
 
-  // Calculate weight change
-  const firstPeso = registros.find((r) => r.peso != null)?.peso ?? null;
+  // Calculate weight change — use peso_inicial from clientes as baseline
   const pesoActual = latest?.peso ?? null;
-  const cambio = (firstPeso != null && pesoActual != null)
-    ? (pesoActual - firstPeso)
+  const base = pesoInicial ?? registros.find((r) => r.peso != null)?.peso ?? null;
+  const cambio = (base != null && pesoActual != null)
+    ? (pesoActual - base)
     : null;
 
   // Bar chart max
@@ -90,13 +91,13 @@ export default function ProgresoClient({ clienteId, pesoMeta, registros }: Props
         {last8.length > 0 ? (
           <div className="bg-surface border border-[rgba(255,255,255,0.08)] rounded-2xl p-4">
             {/* Bar chart */}
-            <div className="flex items-end gap-2 h-32">
+            <div className="flex items-end gap-2 h-44">
               {last8.map((r, i) => {
-                const height = r.peso ? Math.max(4, (r.peso / maxPeso) * 100) : 4;
+                const height = r.peso ? Math.max(8, (r.peso / maxPeso) * 100) : 8;
                 const isLatest = i === last8.length - 1;
                 return (
                   <div key={r.id} className="flex flex-col items-center gap-1 flex-1">
-                    <span className="text-[9px] font-data text-muted">
+                    <span className="text-[11px] font-data font-semibold text-text">
                       {r.peso ?? "—"}
                     </span>
                     <div
@@ -105,7 +106,7 @@ export default function ProgresoClient({ clienteId, pesoMeta, registros }: Props
                       }`}
                       style={{ height: `${height}%` }}
                     />
-                    <span className="text-[9px] font-data text-muted/60 truncate w-full text-center">
+                    <span className="text-[10px] font-data text-muted/70 truncate w-full text-center">
                       {formatFecha(r.fecha)}
                     </span>
                   </div>
