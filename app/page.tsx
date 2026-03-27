@@ -25,7 +25,7 @@ export default function LandingPage() {
       {/* HERO */}
       <section className="relative min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
-        <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center opacity-30" />
+        <div className="absolute inset-0 bg-[url('/hero-bg.jpeg')] bg-cover bg-center opacity-40" />
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-24 pb-16">
           <div className="max-w-lg ml-auto">
             <p className="text-[10px] tracking-[0.3em] text-red-500 uppercase mb-6 flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function LandingPage() {
             ¿POR QUÉ<br /><span className="text-red-600">ÓSCAR?</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-0 border border-white/10">
-            <div className="bg-[#111] aspect-[4/5] md:aspect-auto" />
+            <div className="bg-[url('/oscar-workout.jpeg')] bg-cover bg-center aspect-[4/5] md:aspect-auto" />
             <div className="p-10 md:p-16 flex flex-col justify-center">
               <h3 className="text-4xl font-black leading-tight mb-2">EL ÚNICO COMBO</h3>
               <h3 className="text-4xl font-black text-red-600 mb-6">COMPLETO.</h3>
