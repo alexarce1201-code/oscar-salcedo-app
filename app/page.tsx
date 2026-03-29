@@ -81,7 +81,7 @@ export default function LandingPage() {
             ¿POR QUÉ<br /><span className="text-red-600">ÓSCAR?</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-0 border border-white/10">
-            <div className="bg-[url('/oscar-workout.jpeg')] bg-cover bg-center aspect-[4/5] md:aspect-auto" />
+            <div className="bg-[url('/oscar-workout.jpeg')] bg-cover bg-[center_top_30%] aspect-[4/5] md:aspect-auto" />
             <div className="p-10 md:p-16 flex flex-col justify-center">
               <h3 className="text-4xl font-black leading-tight mb-2">EL ÚNICO COMBO</h3>
               <h3 className="text-4xl font-black text-red-600 mb-6">COMPLETO.</h3>
